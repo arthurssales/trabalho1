@@ -1,18 +1,18 @@
 import java.util.ArrayList;
 public class CasaMagica extends Casa {
 
-    Jogador ultimo = null;
+    Jogador ultimoJogador = null;
        
     @Override
-    public void aplicarEfeito(Jogador jogador){//,Jogo jogo) {
+    public void aplicarEfeito(Jogador jogador){
             
-        if(ultimo != jogador) {
+        if(ultimoJogador != jogador) {
         
             int posAux = jogador.getPosicao();                
-            jogador.setPosicao(ultimo.getPosicao());
-            ultimo.setPosicao(posAux);
+            jogador.setPosicao(ultimoJogador.getPosicao());
+            ultimoJogador.setPosicao(posAux);
 
-            System.out.println("\n " + jogador.getNome() + " trocou de posição com " + ultimo.getNome());
+            System.out.println("\n" + jogador.getNome() + " trocou de posição com " + ultimoJogador.getNome());
         }
         else {
             System.out.println("\n" + jogador.getNome() + " já está em último.");
@@ -20,14 +20,14 @@ public class CasaMagica extends Casa {
     }
 
     public Jogador encontrarUltimo(ArrayList<Jogador> jogadores, Jogador jogadorSelecionado){
-        ultimo = jogadores.get(0);
-        //definir qual é a menor posicao
-        for(Jogador jogador : jogadores){
-            if(jogador.getPosicao() < ultimo.getPosicao()){
-                ultimo = jogador;
+       ultimoJogador = jogadores.get(0);
+
+        for(Jogador j : jogadores){
+            if(j.getPosicao() < ultimoJogador.getPosicao()){
+                ultimoJogador = j;
             }
         }
     
-        return ultimo;
+        return ultimoJogador;
     }
 }

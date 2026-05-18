@@ -17,12 +17,6 @@ public abstract class Jogador {
              
         if(cor.equals("azul"))
             this.cor = "\u001B[34mA";
-
-        if(cor.equals("verde"))
-            this.cor = "\u001B[32mV";
-        
-        if(cor.equals("amarelo"))
-            this.cor = "\u001B[33mA";
         
         if(cor.equals("rosa"))
             this.cor = "\u001B[35mR";
@@ -32,21 +26,16 @@ public abstract class Jogador {
         
         if(cor.equals("preto"))
             this.cor = "\u001B[30mP";
-        
+
         if(cor.equals("ciano"))
-            this.cor = "\u001B[36mC";
+            this.cor = "\u001B[36mC";  
     }
 
-    public void mover(int valor) {
+    /*public void mover(int valor) {
         posicao += valor;
-    }
+    }*/
 
     public abstract int jogarDados();
-
-    
-    public void mostrarResultado(){
-        System.out.printf("\nDado 1: %d - Dado 2: %d - Posição de %s: %d", dado1, dado2, nome, posicao);
-    }
 
     public boolean Venceu(){
         if(posicao >= 40){    
