@@ -5,6 +5,7 @@ public class CasaNormal extends Casa{
     }
 
     @Override
-    public void aplicarEfeito(Jogador jogador) {
+    public Jogador aplicarEfeito(Jogador jogador) {
+        return jogador;
     }
 }

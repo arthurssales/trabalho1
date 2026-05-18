@@ -122,6 +122,7 @@ public class Jogo {
                     continue;
                 }
 
+
                 tabuleiro.construirTabuleiro();
                 tabuleiro.posicionarJogadores(jogadores, jogadorSelecionado);
                 tabuleiro.sobreporJogador(jogadorSelecionado.getPosicao(),jogadorSelecionado.getCor());
@@ -142,34 +143,42 @@ public class Jogo {
                     jogadorSelecionado.getPosicao());
                     
                     tabuleiro.movimento(jogadores, jogadorSelecionado,jogadorSelecionado.getSoma(),posicaoAntiga);
-                    instanciarCasa(jogadorSelecionado,jogadorSelecionado.getPosicao());
+                    //--------------------------------//
+                    Jogador novoJogador = instanciarCasa(jogadorSelecionado,jogadorSelecionado.getPosicao());
+                    int indice = jogadores.indexOf(jogadorSelecionado);
+                    jogadores.set(indice,novoJogador);
+                    //-------------------------------//
                     
-                    //posicaoAntiga = jogadorSelecionado.getPosicao();
-                    //if(!casaNormal)
-                      //  tabuleiro.movimento(jogadores, jogadorSelecionado, jogadorSelecionado.getSoma(), posicaoAntiga);
-                      
-                   System.out.println();
-                   
-                   while(jogadorSelecionado.getDado1() == jogadorSelecionado.getDado2()) {
-                                             
+                    System.out.println();
+                    
+                    while(jogadorSelecionado.getDado1() == jogadorSelecionado.getDado2()) {
+                        
                         posicaoAntiga = jogadorSelecionado.getPosicao();
                         System.out.println("\nDados iguais! Jogue novamente!");
                         System.out.println("\nAperte ENTER para jogar dados");
                         teclado.nextLine();
-
+                        
                         System.out.printf("Soma dos dados: %d - Posição de %s: %d\n",
                         jogadorSelecionado.jogarDados(),
                         jogadorSelecionado.getNome(),
                         jogadorSelecionado.getPosicao());
-                                               
+                        
                         tabuleiro.movimento(jogadores, jogadorSelecionado,jogadorSelecionado.getSoma(),posicaoAntiga);
                         posicaoAntiga = jogadorSelecionado.getPosicao();
                         instanciarCasa(jogadorSelecionado,jogadorSelecionado.getPosicao());
+                        
+                        //---------------------------------//
+                        novoJogador = instanciarCasa(jogadorSelecionado,jogadorSelecionado.getPosicao());
+                        indice = jogadores.indexOf(jogadorSelecionado);
+                        jogadores.set(indice,novoJogador);
+                        //--------------------------------//
+                        
                         System.out.println();
                         
                         if(!casaNormal)
                             tabuleiro.movimento(jogadores, jogadorSelecionado,jogadorSelecionado.getSoma(), posicaoAntiga);
                     }                     
+                    jogadorSelecionado = novoJogador;
                 }
 
                 if(modo == 2){
@@ -204,7 +213,7 @@ public class Jogo {
     */    
     }
     
-    private void instanciarCasa(Jogador jogador,int posicao){
+    private Jogador instanciarCasa(Jogador jogador,int posicao){
         String nomeJogador;
         casaNormal = true;
 
@@ -220,7 +229,7 @@ public class Jogo {
         if(posicao == 13){
             //casaNormal = false;
             Casa casa = new CasaSurpresa();
-            casa.aplicarEfeito(jogador);
+            jogador = casa.aplicarEfeito(jogador);
         }
         
         //anda 3 casas se não for um azarado
@@ -251,6 +260,7 @@ public class Jogo {
             casa.encontrarUltimo(jogadores,jogador);
             casa.aplicarEfeito(jogador);
         }  
+        return jogador;
     }
     
     public Jogador escolherJogador(String nome){

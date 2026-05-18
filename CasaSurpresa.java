@@ -1,32 +1,47 @@
 import java.util.Random;
 public class CasaSurpresa extends Casa{
     Random random = new Random();
-    private int tiposPossiveis;
+    private int tipo;
+    private Cor cor = new Cor();
 
-    
-    //ele pode tirar o mesmo tipo? acredito que não
     @Override
-    public void aplicarEfeito(Jogador jogador){//, Jogo jogo) {
+    public Jogador aplicarEfeito(Jogador jogador){
+        Jogador novoJogador = null;
+        String corOriginal = cor.retornarNomeCor(jogador.getCor());
+
+        tipo = random.nextInt(3);
         
-            System.out.println("Escolhendo um tipo ");
-            tiposPossiveis = random.nextInt(3);
+        //normal
+        System.out.println("Escolhendo um tipo ");
+        
+        switch (tipo) {
+            case 0:
+                System.out.printf("%s virou normal",jogador.getNome());
+                novoJogador = new JogadorNormal(corOriginal,jogador.getNome());
+                //jogador.setSubstituido(true);
+                break;
             
-            switch(tiposPossiveis){
-                case 0:
-                    //normal
-                    
-                    case 1:
-                //sortudo
-                
-                case 2:
-                    //azarado
-                    
-                    
-                    
-                }
+            case 1:
+                System.out.printf("%s virou sortudo",jogador.getNome());
+                novoJogador = new JogadorSorte(corOriginal, jogador.getNome());
+                //jogador.setSubstituido(true);
+                break;
             
-                
+            case 2:
+                System.out.printf("%s virou azarado",jogador.getNome());
+                novoJogador = new JogadorAzarado(corOriginal, jogador.getNome());
+                //jogador.setSubstituido(true);
+                break;
+            
+            default:
+                break;
+        }
 
+        if(novoJogador != null){
+            novoJogador.setPosicao(jogador.getPosicao());
+            novoJogador.setPerderRodada(jogador.isPerderRodada());
+        }
 
+        return novoJogador;
     }
 }

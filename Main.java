@@ -13,7 +13,7 @@ public class Main {
         } while (modoJogo < 1 || modoJogo > 2);
         
         Jogo jogo = new Jogo(modoJogo);
-        
+
         jogo.cadastrarJogadores();
         metodo.limparTela();
         
@@ -26,18 +26,8 @@ public class Main {
         jogo.partida();
 
         jogo.mostrarEstatisticas();
-        
-        /*1. cadastro de jogadores:
-        - não permitir tipos de jogador repetidos caso tenha somente 2 ou 3 jogadores na partida (importante)
-
-        
-        2. inicio da partida
-        2.1. interação dos jogadores com o tabuleiro (importante):
+        /* 
         - como alterar o tipo de jogador enquanto o programa esta sendo executado?
-    
-        3. mostrar estatisticas:
-        - quantidade de vezes em que um jogador lançou dados repetidos
-        - casas especiais em que o jogador caiu
         */
     }
 }

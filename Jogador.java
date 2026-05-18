@@ -7,6 +7,7 @@ public abstract class Jogador {
     protected int soma;
     protected String nome;
     protected int dadosLancados = 0;
+    protected boolean substituido = false;
 
     public Jogador(String cor,String nome) {
         this.nome = nome;
@@ -18,17 +19,17 @@ public abstract class Jogador {
         if(cor.equals("azul"))
             this.cor = "\u001B[34mA";
         
-        if(cor.equals("rosa"))
-            this.cor = "\u001B[35mR";
-        
         if(cor.equals("branco"))
             this.cor = "\u001B[37mB";
         
-        if(cor.equals("preto"))
-            this.cor = "\u001B[30mP";
-
         if(cor.equals("ciano"))
             this.cor = "\u001B[36mC";  
+        
+        if(cor.equals("preto"))
+            this.cor = "\u001B[30mP";
+        
+        if(cor.equals("rosa"))
+            this.cor = "\u001B[35mR";
     }
 
     /*public void mover(int valor) {
@@ -56,6 +57,7 @@ public abstract class Jogador {
         if(posicao > 40)
             posicao = 40;
     }
+
     public void setPosicao(int posicao) {
         this.posicao = posicao;
     }
@@ -90,5 +92,13 @@ public abstract class Jogador {
 
     public String getNome() {
         return nome;
+    }
+
+    public boolean isSubstituido() {
+        return substituido;
+    }
+
+    public void setSubstituido(boolean substituido) {
+        this.substituido = substituido;
     }
 }

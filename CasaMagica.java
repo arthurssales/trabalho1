@@ -4,7 +4,7 @@ public class CasaMagica extends Casa {
     Jogador ultimoJogador = null;
        
     @Override
-    public void aplicarEfeito(Jogador jogador){
+    public Jogador aplicarEfeito(Jogador jogador){
             
         if(ultimoJogador != jogador) {
         
@@ -17,6 +17,7 @@ public class CasaMagica extends Casa {
         else {
             System.out.println("\n" + jogador.getNome() + " já está em último.");
         }
+        return jogador;
     }
 
     public Jogador encontrarUltimo(ArrayList<Jogador> jogadores, Jogador jogadorSelecionado){

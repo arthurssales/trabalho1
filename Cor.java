@@ -17,6 +17,30 @@ public class Cor {
             System.out.printf("[%s] ",cor);
         }
     }
+
+    public String retornarNomeCor(String cor){
+        System.out.println("DEBUG" +  cor);
+        if(cor.contains("\u001B[31mV"))
+            return "vermelho";
+
+        if(cor.contains("\u001B[34mA"))
+            return "azul";
+        
+        if(cor.contains("\u001B[37mB"))
+            return "branco";
+        
+        if(cor.contains("\u001B[36mC"))
+            return "ciano";
+        
+        if(cor.contains("\u001B[30mP"))
+            return "preto";
+        
+        if(cor.contains("\u001B[35mR"))
+            return "rosa";
+
+        else
+            return "ABACATE";
+    }
     
     public boolean selecionarCor(String cor){
         if(coresDisponiveis.contains(cor)){

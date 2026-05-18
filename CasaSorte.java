@@ -2,7 +2,7 @@ public class CasaSorte extends Casa {
 
    
     @Override
-    public void aplicarEfeito(Jogador jogador){//, Jogo jogo) {
+    public Jogador aplicarEfeito(Jogador jogador){//, Jogo jogo) {
         if(jogador != null){
 
                 if(!(jogador instanceof JogadorAzarado)) {
@@ -15,5 +15,6 @@ public class CasaSorte extends Casa {
                 }
             
         }    
+        return jogador;
     }
 }
