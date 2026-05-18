@@ -7,7 +7,11 @@ public abstract class Jogador {
     protected int soma;
     protected String nome;
     protected int dadosLancados = 0;
-    protected boolean substituido = false;
+    protected EstrategiaDados estrategiaDados = EstrategiaDados.normal();
+
+    public void setEstrategia(EstrategiaDados estrategia) {
+        this.estrategiaDados = estrategia;
+    }
 
     public Jogador(String cor,String nome) {
         this.nome = nome;
@@ -45,6 +49,7 @@ public abstract class Jogador {
         return false;
     }
 
+    
     public int getDadosLancados(){
         return dadosLancados;
     }
@@ -94,11 +99,19 @@ public abstract class Jogador {
         return nome;
     }
 
-    public boolean isSubstituido() {
+    /*public boolean isSubstituido() {
         return substituido;
     }
 
     public void setSubstituido(boolean substituido) {
         this.substituido = substituido;
+    }*/
+
+    public EstrategiaDados getEstrategiaDados() {
+        return estrategiaDados;
+    }
+
+    public void setEstrategiaDados(EstrategiaDados estrategiaDados) {
+        this.estrategiaDados = estrategiaDados;
     }
 }

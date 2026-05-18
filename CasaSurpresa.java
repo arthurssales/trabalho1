@@ -6,9 +6,7 @@ public class CasaSurpresa extends Casa{
 
     @Override
     public Jogador aplicarEfeito(Jogador jogador){
-        Jogador novoJogador = null;
-        String corOriginal = cor.retornarNomeCor(jogador.getCor());
-
+        
         tipo = random.nextInt(3);
         
         //normal
@@ -16,32 +14,26 @@ public class CasaSurpresa extends Casa{
         
         switch (tipo) {
             case 0:
-                System.out.printf("%s virou normal",jogador.getNome());
-                novoJogador = new JogadorNormal(corOriginal,jogador.getNome());
-                //jogador.setSubstituido(true);
+                jogador.setEstrategia(EstrategiaDados.normal());    
+                System.out.printf("%s virou Normal!\n", jogador.getNome());
                 break;
             
             case 1:
-                System.out.printf("%s virou sortudo",jogador.getNome());
-                novoJogador = new JogadorSorte(corOriginal, jogador.getNome());
-                //jogador.setSubstituido(true);
+                jogador.setEstrategia(EstrategiaDados.sorte());
+                System.out.printf("%s virou Sortudo!\n", jogador.getNome());
                 break;
-            
+                
             case 2:
-                System.out.printf("%s virou azarado",jogador.getNome());
-                novoJogador = new JogadorAzarado(corOriginal, jogador.getNome());
-                //jogador.setSubstituido(true);
+                jogador.setEstrategia(EstrategiaDados.azarado());
+                System.out.printf("%s virou Azarado!\n", jogador.getNome());
                 break;
             
             default:
                 break;
         }
 
-        if(novoJogador != null){
-            novoJogador.setPosicao(jogador.getPosicao());
-            novoJogador.setPerderRodada(jogador.isPerderRodada());
-        }
+    
 
-        return novoJogador;
+        return jogador;
     }
 }

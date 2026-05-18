@@ -5,17 +5,12 @@ public class Jogo {
     private final int modo; 
     private final ArrayList<Jogador> jogadores = new ArrayList<>();
     private final Scanner teclado = new Scanner(System.in);
-    //private boolean jgval = false;
-    //private Random random = new Random();
     private final ArrayList<String> nomeJogadores = new ArrayList<>();
     private final String reset = "\u001B[0m";
     
-    //private final Cor cor = new Cor();
     private final Tabuleiro tabuleiro = new Tabuleiro();
-    private boolean casaNormal;
     private int qtd;
     private int rodadas = 0;
-    //ArrayList<Integer> tiposEscolhidos = new ArrayList<>();
     Jogador jogadorVencedor = null;
     
     public Jogo(int modo){
@@ -143,11 +138,7 @@ public class Jogo {
                     jogadorSelecionado.getPosicao());
                     
                     tabuleiro.movimento(jogadores, jogadorSelecionado,jogadorSelecionado.getSoma(),posicaoAntiga);
-                    //--------------------------------//
-                    Jogador novoJogador = instanciarCasa(jogadorSelecionado,jogadorSelecionado.getPosicao());
-                    int indice = jogadores.indexOf(jogadorSelecionado);
-                    jogadores.set(indice,novoJogador);
-                    //-------------------------------//
+                    instanciarCasa(jogadorSelecionado,jogadorSelecionado.getPosicao());
                     
                     System.out.println();
                     
@@ -165,20 +156,11 @@ public class Jogo {
                         
                         tabuleiro.movimento(jogadores, jogadorSelecionado,jogadorSelecionado.getSoma(),posicaoAntiga);
                         posicaoAntiga = jogadorSelecionado.getPosicao();
-                        instanciarCasa(jogadorSelecionado,jogadorSelecionado.getPosicao());
-                        
-                        //---------------------------------//
-                        novoJogador = instanciarCasa(jogadorSelecionado,jogadorSelecionado.getPosicao());
-                        indice = jogadores.indexOf(jogadorSelecionado);
-                        jogadores.set(indice,novoJogador);
-                        //--------------------------------//
+                        instanciarCasa(jogadorSelecionado,jogadorSelecionado.getPosicao());                    
                         
                         System.out.println();
-                        
-                        if(!casaNormal)
-                            tabuleiro.movimento(jogadores, jogadorSelecionado,jogadorSelecionado.getSoma(), posicaoAntiga);
-                    }                     
-                    jogadorSelecionado = novoJogador;
+                    
+                    }                         
                 }
 
                 if(modo == 2){
@@ -215,11 +197,11 @@ public class Jogo {
     
     private Jogador instanciarCasa(Jogador jogador,int posicao){
         String nomeJogador;
-        casaNormal = true;
+        //casaNormal = true;
 
         //fica uma rodada sem jogar
         if(posicao == 10 || posicao == 25 || posicao == 38){
-            casaNormal = false;
+            //casaNormal = false;
             Casa casa = new CasaPerdeRodada();
             casa.aplicarEfeito(jogador);
         }
@@ -234,7 +216,7 @@ public class Jogo {
         
         //anda 3 casas se não for um azarado
         if(posicao == 5 || posicao == 15 || posicao == 30){
-            casaNormal = false;
+            //casaNormal = false;
             Casa casa = new CasaSorte();
             casa.aplicarEfeito(jogador);
         }

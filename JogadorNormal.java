@@ -1,17 +1,15 @@
-import java.util.Random;
-
 public class JogadorNormal extends Jogador{
-    Random random = new Random();
-    
+     
     public JogadorNormal(String cor,String nome){
         super(cor,nome);
+        this.estrategiaDados = EstrategiaDados.normal();
     }
 
     @Override
     public int jogarDados() {
-        dado1 = random.nextInt(6)+1;
-        dado2 = random.nextInt(6)+1;
-        
+        int[] dados = estrategiaDados.lançar();
+        dado1 = dados[0];
+        dado2 = dados[1];
         soma = dado1 + dado2;
         
         posicao += soma;

@@ -5,7 +5,7 @@ public class CasaSorte extends Casa {
     public Jogador aplicarEfeito(Jogador jogador){//, Jogo jogo) {
         if(jogador != null){
 
-                if(!(jogador instanceof JogadorAzarado)) {
+                if((jogador.getEstrategiaDados() != EstrategiaDados.azarado())) {
                     
                     jogador.setPosicao(3 + jogador.getPosicao());
                     System.out.println("\n" + jogador.getNome() + " avançou 3 casas!");
