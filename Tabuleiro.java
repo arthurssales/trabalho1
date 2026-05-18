@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Tabuleiro {
-    private String reset = "\u001B[0m";
-    private String[] tabuleiro = new String[41];
+    private final String reset = "\u001B[0m";
+    private final String[] tabuleiro = new String[41];
     private int i;
     MetodoImplements metodo = new MetodoImplements();
       
@@ -39,15 +39,6 @@ public class Tabuleiro {
         tabuleiro[posicao] = cor;
     }
 
-    /*public void movimentoCasaSorte(ArrayList<Jogador> jogadores,Jogador jogador,int posicaoAntiga){
-        int passos;
-        for(passos = 1; passos <= 3;passos++){
-            System.out.println();
-            construirTabuleiro();
-        }
-    }*/
-    //para depois
-    //adidcionar metodo movimento que mostra o movimento realizado pelo jogador 
     public void movimento(ArrayList<Jogador> jogadores,Jogador jogador,int soma,int posicaoAntiga){
         int passos;
         for(passos = 1; passos <= soma; passos++){
@@ -55,8 +46,8 @@ public class Tabuleiro {
             construirTabuleiro();
             
             try {
-                posicionarJogadores(jogadores,jogador);//imprime o jogador na posição futura
-                sobreporJogador(passos + posicaoAntiga, jogador.getCor());//realiza o movimento
+                posicionarJogadores(jogadores,jogador);
+                sobreporJogador(passos + posicaoAntiga, jogador.getCor());
             } catch (Exception e) {
                 break;
             }

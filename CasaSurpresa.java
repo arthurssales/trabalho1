@@ -2,8 +2,7 @@ import java.util.Random;
 public class CasaSurpresa extends Casa{
     Random random = new Random();
     private int tipo;
-    private Cor cor = new Cor();
-
+    
     @Override
     public Jogador aplicarEfeito(Jogador jogador){
         

@@ -10,8 +10,7 @@ public class JogadorAzarado extends Jogador {
         int[] dados = estrategiaDados.lançar();
         dado1 = dados[0];
         dado2 = dados[1];
-        soma = dado1 + dado2;        
-        
+        soma = dado1 + dado2;           
         posicao += soma;
 
         dadosLancados++;

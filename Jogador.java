@@ -36,10 +36,6 @@ public abstract class Jogador {
             this.cor = "\u001B[35mR";
     }
 
-    /*public void mover(int valor) {
-        posicao += valor;
-    }*/
-
     public abstract int jogarDados();
 
     public boolean Venceu(){
@@ -49,7 +45,6 @@ public abstract class Jogador {
         return false;
     }
 
-    
     public int getDadosLancados(){
         return dadosLancados;
     }
@@ -98,14 +93,6 @@ public abstract class Jogador {
     public String getNome() {
         return nome;
     }
-
-    /*public boolean isSubstituido() {
-        return substituido;
-    }
-
-    public void setSubstituido(boolean substituido) {
-        this.substituido = substituido;
-    }*/
 
     public EstrategiaDados getEstrategiaDados() {
         return estrategiaDados;

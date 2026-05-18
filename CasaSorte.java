@@ -1,6 +1,5 @@
 public class CasaSorte extends Casa {
 
-   
     @Override
     public Jogador aplicarEfeito(Jogador jogador){//, Jogo jogo) {
         if(jogador != null){
@@ -12,8 +11,7 @@ public class CasaSorte extends Casa {
                 }
                 else {
                     System.out.println("\n" + jogador.getNome() +" é azarado e não ganhou bônus.");
-                }
-            
+                }     
         }    
         return jogador;
     }

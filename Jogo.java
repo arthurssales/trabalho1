@@ -71,7 +71,6 @@ public class Jogo {
                     break;
             }    
 
-           //criar verificação que obrigue a ter dois tipos diferentes caso tenha apenas dois jogadores e tres tipos diferentes se tiver apenas tres jogadores
             switch(tipoJogador){
 
                 case 1:
@@ -93,17 +92,12 @@ public class Jogo {
 
                 if( (jogadorNormal == 0 && jogadorAzarado == 0) || (jogadorNormal == 0 && jogadorSortudo == 0) || (jogadorSortudo == 0 && jogadorAzarado == 0) ){                        
                     System.out.println("Deve existir pelo menos dois tipos diferentes!");
-
                     jogadores.clear();
-                            
                     nomeJogadores.clear();
-            
                     cadastrarJogadores();
                 }
     }
     
-   
-    //dentro da partida ocorrerá a interação das casas com o jogador
     public void partida(){
         tabuleiro.construirTabuleiro();
         int posicaoAntiga;
@@ -117,13 +111,11 @@ public class Jogo {
                     continue;
                 }
 
-
                 tabuleiro.construirTabuleiro();
                 tabuleiro.posicionarJogadores(jogadores, jogadorSelecionado);
                 tabuleiro.sobreporJogador(jogadorSelecionado.getPosicao(),jogadorSelecionado.getCor());
                 
                 System.out.printf("\nVez de %s\n",jogadorSelecionado.getNome());
-                //tabuleiro.movimento(jogadores, jogadorSelecionado,jogadorSelecionado.getSoma(), jogadorSelecionado.getPosicao());
                 tabuleiro.imprimirTabuleiro();
                 
                 if(modo == 1){  
@@ -155,11 +147,9 @@ public class Jogo {
                         jogadorSelecionado.getPosicao());
                         
                         tabuleiro.movimento(jogadores, jogadorSelecionado,jogadorSelecionado.getSoma(),posicaoAntiga);
-                        posicaoAntiga = jogadorSelecionado.getPosicao();
                         instanciarCasa(jogadorSelecionado,jogadorSelecionado.getPosicao());                    
                         
-                        System.out.println();
-                    
+                        System.out.println();                   
                     }                         
                 }
 
@@ -190,40 +180,33 @@ public class Jogo {
             }     
     }while(jogadorVencedor == null);
 
-        /*jogadorVencedor.setPosicao(40);
-        tabuleiro.movimento(jogadores, jogadorVencedor, jogadorVencedor.getSoma(), posicaoAntiga);    
-    */    
     }
     
     private Jogador instanciarCasa(Jogador jogador,int posicao){
         String nomeJogador;
-        //casaNormal = true;
-
+    
         //fica uma rodada sem jogar
         if(posicao == 10 || posicao == 25 || posicao == 38){
-            //casaNormal = false;
             Casa casa = new CasaPerdeRodada();
             casa.aplicarEfeito(jogador);
         }
         
         //troca o tipo de jogador
-        //terminar
         if(posicao == 13){
-            //casaNormal = false;
             Casa casa = new CasaSurpresa();
             jogador = casa.aplicarEfeito(jogador);
         }
         
         //anda 3 casas se não for um azarado
         if(posicao == 5 || posicao == 15 || posicao == 30){
-            //casaNormal = false;
+            if(jogador.getEstrategiaDados() != EstrategiaDados.azarado())
+                tabuleiro.movimento(jogadores, jogador,3 ,posicao);
             Casa casa = new CasaSorte();
             casa.aplicarEfeito(jogador);
         }
         
         //escolhe um jogador para voltar ao inicio do jogo
         if(posicao == 17 || posicao == 27){
-            //casaNormal = false;
             Casa casa = new CasaVoltaInicio();
             do{
                 mostrarJogadores();
@@ -233,13 +216,23 @@ public class Jogo {
             }while(escolherJogador(nomeJogador) == null);
             
             casa.aplicarEfeito(escolherJogador(nomeJogador));   
+
+            tabuleiro.construirTabuleiro();
+            tabuleiro.posicionarJogadores(jogadores, jogador);
+            tabuleiro.sobreporJogador(jogador.getPosicao(),jogador.getCor());
+            tabuleiro.imprimirTabuleiro();
         }
         
         //troca de posição com o ultimo
         if(posicao == 20 || posicao == 35){
-            //casaNormal = false;
             CasaMagica casa = new CasaMagica();
             casa.encontrarUltimo(jogadores,jogador);
+            
+            tabuleiro.construirTabuleiro();
+            tabuleiro.posicionarJogadores(jogadores, jogador);
+            tabuleiro.sobreporJogador(jogador.getPosicao(),jogador.getCor());
+            tabuleiro.imprimirTabuleiro();
+            
             casa.aplicarEfeito(jogador);
         }  
         return jogador;

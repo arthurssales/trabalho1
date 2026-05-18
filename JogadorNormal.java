@@ -16,7 +16,5 @@ public class JogadorNormal extends Jogador{
         
         dadosLancados++;
         return soma;
-    }
-
-    
+    } 
 }

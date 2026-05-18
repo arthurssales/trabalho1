@@ -4,8 +4,7 @@ public class Main {
         Scanner teclado = new Scanner(System.in);
         int modoJogo = 0;
         MetodoImplements metodo = new MetodoImplements();
-        
-        
+               
         System.out.println("Escolha o modo de jogo: ");
         do{ 
             System.out.println("1 - Lançar dados\n2 - Modo debug");           
@@ -26,8 +25,5 @@ public class Main {
         jogo.partida();
 
         jogo.mostrarEstatisticas();
-        /* 
-        - como alterar o tipo de jogador enquanto o programa esta sendo executado?
-        */
     }
 }

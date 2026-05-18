@@ -5,7 +5,6 @@ public class JogadorSorte extends Jogador{
         this.estrategiaDados = EstrategiaDados.sorte();
     }
     
-    
     @Override
     public int jogarDados() {
         int[] dados = estrategiaDados.lançar();
